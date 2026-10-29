@@ -22,7 +22,7 @@ The project explores multiple classification algorithms, compares their performa
 
 ## 📂 Dataset Description
 
-The dataset contains **15,000 rows and 16 columns**, as reported in the notebook.
+The dataset contains **25,001 rows and 16 columns**, as reported in the notebook.
 
 The features cover student demographics, study habits, attendance, educational background, and academic scores.
 
