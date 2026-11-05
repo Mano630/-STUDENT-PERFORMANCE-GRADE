@@ -1,7 +1,7 @@
 
-# 🎓 Student Performance Prediction System
+#  Student Performance Prediction System
 
-## 📌 About the Project
+##  About the Project
 
 The Student Performance Prediction System is a Machine Learning project that predicts students' final grades (A–F) based on their academic performance, study habits, and other relevant factors.
 
@@ -9,7 +9,7 @@ The project involves data preprocessing, exploratory data analysis (EDA), featur
 
 The best-performing model is integrated into an interactive Streamlit web application for student grade prediction.
 
-## 📊 Dataset
+##  Dataset
 
 The dataset used in this project originally contains 25,000 student records and 16 columns.
 
@@ -46,7 +46,7 @@ Dataset File: `Student_Performance.csv`
 
 Add the original dataset download link here.
 
-## 🔍 Input Features
+##  Input Features
 
 The input features used for student grade prediction include:
 
@@ -65,7 +65,7 @@ The input features used for student grade prediction include:
 - English Score
 - Overall Score
 
-## 🎯 Target Variable
+##  Target Variable
 
 **Final Grade**
 
@@ -80,7 +80,7 @@ The target variable represents six student grade categories.
 | E | 2 |
 | F | 1 |
 
-## 🤖 Machine Learning Algorithms
+##  Machine Learning Algorithms
 
 The following classification algorithms were implemented and compared:
 
@@ -100,7 +100,7 @@ The following classification algorithms were implemented and compared:
 
 **Gradient Boosting Classifier**
 
-## 📈 Evaluation Metrics
+##  Evaluation Metrics
 
 The machine learning models were evaluated using:
 
@@ -114,7 +114,7 @@ The machine learning models were evaluated using:
 - Average Precision
 - Stratified K-Fold Cross-Validation
 
-## 🏆 Model Performance
+##  Model Performance
 
 | Machine Learning Model | Test Accuracy |
 |------------------------|---------------|
@@ -133,7 +133,7 @@ The machine learning models were evaluated using:
 
 **Note:** The `overall_score` feature should be checked for potential target leakage because it may be directly related to the final grade. This is important when assessing real-world model generalization.
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Python
 - Pandas
@@ -149,7 +149,7 @@ The machine learning models were evaluated using:
 - Google Colab
 - Git & GitHub
 
-## 🔄 Project Workflow
+##  Project Workflow
 
 1. Data Collection
 2. Data Cleaning
@@ -168,7 +168,7 @@ The machine learning models were evaluated using:
 15. Streamlit Application Development
 16. Student Grade Prediction
 
-## 💻 Streamlit Web Application
+##  Streamlit Web Application
 
 An interactive Student Grade Predictor web application was developed using Streamlit.
 
@@ -189,7 +189,7 @@ An interactive Student Grade Predictor web application was developed using Strea
 
 `app.py`
 
-## 🚀 How to Run the Project
+##  How to Run the Project
 
 ### Step 1: Clone the Repository
 
@@ -234,7 +234,7 @@ streamlit run app.py
 
 Enter the required student information and generate the predicted final grade.
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 - Hyperparameter tuning for further model optimization
 - Additional feature engineering
@@ -244,7 +244,7 @@ Enter the required student information and generate the predicted final grade.
 - Model monitoring and performance tracking
 - Integration with an academic dashboard
 
-## 👨‍💻 Author
+##  Author
 
 **Manodip Bouri**
 
