@@ -1,216 +1,140 @@
-# -STUDENT-PERFORMANCE-GRADE
-# 🎓 Student Performance Prediction System
 
-A machine learning project that analyzes student-related data and predicts final academic grades using classification algorithms. The project includes data preprocessing, exploratory data analysis (EDA), model training, performance evaluation, and an interactive Streamlit application for grade prediction.
+Student Performance Prediction System
+About the Project
+The Student Performance Prediction System is a machine learning classification project that predicts a student's final grade (A–F) using academic performance, study habits, and background factors. The project compares several classification algorithms, evaluates their performance, and uses a Gradient Boosting Classifier in a Streamlit application for interactive predictions.
+Dataset
+The notebook loads the dataset from Student_Performance.csv.
+- Original dataset: 25,000 rows × 16 columns
+- Duplicate rows identified and removed: 10,000
+- Dataset after cleaning: 15,000 rows × 16 columns
+- Missing values: 0 across all columns after cleaning
+Dataset Features
+- Student ID (student_id)
+- Age (age)
+- Gender (gender)
+- School Type (school_type)
+- Parent Education (parent_education)
+- Study Hours (study_hours)
+- Attendance Percentage (attendance_percentage)
+- Internet Access (internet_access)
+- Travel Time (travel_time)
+- Extracurricular Activities (extra_activities)
+- Study Method (study_method)
+- Math Score (math_score)
+- Science Score (science_score)
+- English Score (english_score)
+- Overall Score (overall_score)
+- Final Grade (final_grade)
+Dataset Download
+The notebook references Student_Performance.csv, but it does not provide a public dataset URL. Add the verified dataset source link here if available, or include the CSV in your repository where redistribution is permitted.
+Input Features
+The model uses 14 input features:
+- Age
+- Gender
+- School Type
+- Parent Education
+- Study Hours
+- Attendance Percentage
+- Internet Access
+- Travel Time
+- Extracurricular Activities
+- Study Method
+- Math Score
+- Science Score
+- English Score
+- Overall Score
+student_id is excluded from model training.
+Target Variable
+Final Grade (final_grade) — a six-class categorical target encoded as:
+Grade	Encoded Label
+A	6
+B	5
+C	4
+D	3
+E	2
+F	1
 
-## 📌 Project Overview
 
-The **Student Performance Prediction System** aims to use student demographic, academic, and study-related information to predict final grade categories.
-
-The project explores multiple classification algorithms, compares their performance using evaluation metrics, and implements a Gradient Boosting classifier for an interactive prediction interface.
-
-## 🎯 Objectives
-
-- Analyze student performance data using exploratory data analysis.
-- Identify patterns and relationships between student characteristics and academic outcomes.
-- Clean and preprocess the dataset for machine learning.
-- Encode categorical variables using appropriate encoding techniques.
-- Train and compare multiple classification models.
-- Evaluate models using accuracy, precision, recall, F1-score, and balanced accuracy.
-- Develop an interactive application using Streamlit.
-- Save the trained model for reuse without retraining.
-
-## 📂 Dataset Description
-
-The dataset contains **25,001 rows and 16 columns**, as reported in the notebook.
-
-The features cover student demographics, study habits, attendance, educational background, and academic scores.
-
-| Feature | Description |
-|---|---|
-| `student_id` | Unique student identifier |
-| `age` | Student's age |
-| `gender` | Gender category |
-| `school_type` | Type of school |
-| `parent_education` | Parent's educational background |
-| `study_hours` | Time spent studying |
-| `attendance_percentage` | Student attendance percentage |
-| `internet_access` | Availability of internet access |
-| `travel_time` | Time required to travel to school |
-| `extra_activities` | Participation in extracurricular activities |
-| `study_method` | Preferred study method |
-| `math_score` | Mathematics score |
-| `science_score` | Science score |
-| `english_score` | English score |
-| `overall_score` | Overall academic score |
-| `final_grade` | Target variable representing the final grade |
-
-**Note:** Place the dataset file in the appropriate project directory before running the notebook. The notebook currently references `Student_Performance.csv`.
-
-## 🛠️ Technologies Used
-
-- **Programming Language:** Python
-- **Data Analysis:** Pandas, NumPy
-- **Data Visualization:** Matplotlib, Seaborn
-- **Machine Learning:** Scikit-learn
-- **Additional Models:** XGBoost, LightGBM
-- **Model Persistence:** Joblib
-- **Interactive Application:** Streamlit
-- **Development Environment:** Google Colab / Jupyter Notebook
-- **Version Control:** Git and GitHub
-
-## ⚙️ Project Workflow
-
-### 1. Data Loading and Inspection
-- Load the dataset using Pandas.
-- Examine the dataset's dimensions, columns, and data types.
-- Inspect unique values and identify duplicate records.
-
-### 2. Data Cleaning
-- Check for missing values.
-- Identify and remove duplicate rows.
-- Inspect categorical and numerical features.
-
-### 3. Exploratory Data Analysis (EDA)
-- Analyze the distribution of final grades.
-- Explore relationships between study methods and academic outcomes.
-- Examine categorical feature distributions.
-- Investigate patterns across academic and demographic variables.
-
-### 4. Data Preprocessing
-- Map ordinal categories such as parent education and travel time to numerical values.
-- Apply One-Hot Encoding to nominal categorical variables.
-- Handle missing numerical values using median imputation where required.
-- Separate the input features from the target variable.
-- Split the data into training and testing sets.
-
-### 5. Model Training and Comparison
-
-The notebook explores several classification algorithms:
-
+Machine Learning Algorithms
+The notebook compares these classification algorithms:
 - Logistic Regression
-- Decision Tree
-- Random Forest
-- Gradient Boosting
-- AdaBoost
+- Decision Tree Classifier
+- Random Forest Classifier
+- Gradient Boosting Classifier
+- AdaBoost Classifier
 - Support Vector Classifier (SVC)
 - K-Nearest Neighbors (KNN)
 - Gaussian Naive Bayes
 - Multinomial Naive Bayes
-- LightGBM
-- XGBoost
-
-The models are compared to understand their predictive performance.
-
-### 6. Model Evaluation
-
-The evaluation process includes:
-
+- LightGBM Classifier
+- XGBoost Classifier
+Selected model: Gradient Boosting Classifier.
+Data Preprocessing
+- Checked for and removed duplicate records.
+- Checked for missing values.
+- Encoded categorical features using one-hot encoding and category mappings.
+- Used median imputation in the preprocessing workflow.
+- Split the cleaned dataset into 80% training data and 20% testing data (random_state=42).
+- Used a ColumnTransformer to prepare numerical and categorical inputs for modeling.
+Model Evaluation
+Evaluation includes:
 - Accuracy
-- Balanced accuracy
-- Precision
-- Recall
-- Macro F1-score
-- Weighted F1-score
-- Confusion matrix
-- Classification report
+- Balanced Accuracy
+- Precision, Recall, and F1-score
+- Confusion Matrix
+- ROC-AUC and Average Precision for multiclass model comparison
+- 5-fold stratified cross-validation for the final Gradient Boosting model
+Model Comparison (Test Accuracy)
+Model	Accuracy
+Gradient Boosting	99.60%
+Decision Tree	99.47%
+XGBoost	99.40%
+Random Forest	99.33%
+LightGBM	99.23%
 
-These metrics help assess overall predictive performance and performance across individual grade categories.
 
-### 7. Model Saving
+Final Gradient Boosting Results
+- Test Accuracy: 99.60%
+- Test Balanced Accuracy: 99.46%
+- 5-Fold CV Accuracy: 99.71% ± 0.10%
+- 5-Fold CV Macro F1: 99.71% ± 0.07%
+Modeling note: overall_score is included among the inputs. Verify that this score is available when predictions are made and is not derived directly from the final-grade label; otherwise, reported performance may overestimate real-world predictive ability.
 
-The selected Gradient Boosting model is saved using Joblib, along with its expected feature-column information, for reuse in the prediction application.
-
-### 8. Streamlit Application
-
-The interactive application allows users to enter student information, including academic scores, attendance, study hours, and study-related characteristics.
-
-After submitting the inputs, the application processes the information and displays the predicted final grade.
-
-## 📊 Model Performance
-
-The notebook reports the following results for the Gradient Boosting classifier:
-
-| Evaluation Metric | Result |
-|---|---:|
-| 5-fold cross-validation accuracy | 99.71% ± 0.10% |
-| Cross-validation balanced accuracy | 99.69% ± 0.10% |
-| Cross-validation macro F1-score | 99.71% ± 0.07% |
-| Test accuracy | 99.60% |
-| Test balanced accuracy | 99.46% |
-
-The held-out test set contains 3,000 observations, based on the reported 80:20 train-test split.
-
-**Important evaluation note:** These results should be interpreted carefully. The input features include `math_score`, `science_score`, `english_score`, and `overall_score`, while the target is `final_grade`. If the final grade is calculated directly or indirectly from these scores, target leakage may explain the unusually high accuracy. A more reliable assessment should verify the grade-generation rule and evaluate the model using only features available before the final grade is determined.
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-Install Python and the required libraries:
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn joblib streamlit
-```
-
-Install these additional packages if you intend to run the corresponding models:
-
-```bash
-pip install xgboost lightgbm
-```
-
-### Step 1: Clone the Repository
-
-```bash
-git clone https://github.com/Mano630/Student-Performance-Prediction.git
-cd Student-Performance-Prediction
-```
-
-Replace the repository URL with your actual GitHub repository URL if the repository has a different name.
-
-### Step 2: Prepare the Dataset
-
-Place `Student_Performance.csv` in the directory expected by the notebook.
-
-### Step 3: Run the Notebook
-
-Open the notebook in Google Colab or Jupyter Notebook and execute the cells in sequence.
-
-The notebook performs data analysis, preprocessing, model training, evaluation, and model export.
-
-### Step 4: Run the Streamlit Application
-
-After generating the model artifact and preparing `app.py`, run:
-
-```bash
-streamlit run app.py
-```
-
-Make sure the application loads `student_grade_model.joblib` from the correct local directory. If necessary, update the model path in `app.py`.
-
-## 📁 Suggested Repository Structure
-
-```text
-Student-Performance-Prediction/
-│
-├── Student_Performance.csv
-├── Student_Performance_Prediction.ipynb
-├── app.py
-├── student_grade_model.joblib
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
-The dataset and model artifact should be committed only if you have permission to redistribute them. Large files can be managed using Git LFS or suitable external storage.
-
-## 🔮 Future Improvements
-
-- Investigate target leakage and improve the validity of the prediction task.
-- Perform hyperparameter tuning using cross-validation.
-- Compare models using class-wise precision, recall, and F1-score.
-- Use features available before the final academic outcome is known.
-- Add feature-importance analysis and explainable machine learning.
-- Improve the Streamlit interface with prediction probabilities and visual summaries.
-- Package preprocessing and prediction into a reproducible pipeline.
-- Deploy the application to a suitable hosting platform.
+Technologies Used
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- XGBoost
+- LightGBM
+- Streamlit
+- Joblib
+- Google Colab
+- Pyngrok (for sharing the Streamlit app from Colab)
+Project Workflow
+1. Data Collection
+2. Data Inspection and Cleaning
+3. Exploratory Data Analysis (EDA)
+4. Categorical Encoding and Feature Preparation
+5. Train–Test Split
+6. Classification Model Training
+7. Model Comparison and Evaluation
+8. Cross-Validation and Best Model Selection
+9. Model Saving with Joblib
+10. Student Grade Prediction through Streamlit
+Streamlit Application
+The notebook contains code to generate a Streamlit Student Grade Predictor app. Users can enter academic and personal-study information to see:
+- Predicted final grade (A–F)
+- Model confidence
+- Predicted probabilities across all six grade classes
+The trained model is saved as student_grade_model.joblib, and the app code is written to app.py in the Colab environment.
+How to Run
+1. Open the notebook Student__Performance_in (3).ipynb in Google Colab.
+2. Upload the required Student_Performance.csv dataset to the notebook runtime.
+3. Run the notebook cells to clean the data, train/evaluate models, and save student_grade_model.joblib.
+4. Run the notebook cell that writes /content/app.py.
+5. Use the Streamlit and Pyngrok launch cells in the notebook to open the app in Colab.
+Note: The app currently loads the model from /content/student_grade_model.joblib, a Colab-specific path. Update this path if running Streamlit locally or deploying elsewhere. An ngrok link is temporary and requires the Colab runtime to remain active.
+Author
